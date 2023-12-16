@@ -1,7 +1,3 @@
 {
-  "lock": false,
-  "imports": {
-    "lume/": "https://deno.land/x/lume@v2.0.1/",
-    "shikiji": "npm:shikiji@0.9.6"
-  }
+  "lock": false
 }

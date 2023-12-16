@@ -1,8 +1,5 @@
-import { addClassToHast, getHighlighter, ShikijiTransformer } from "shikiji";
-
-import Site from "lume/core/site.ts";
-import { merge } from "lume/core/utils/object.ts";
-import { Page } from "lume/core/file.ts";
+import { merge, Site, Page } from "../../../deps/lume.ts";
+import { addClassToHast, getHighlighter, ShikijiTransformer } from "../../../deps/shikiji.ts";
 
 import createCSSTheme from "./createCSSTheme.ts";
 import { unescape } from "./utils.ts";
