@@ -1,8 +1,7 @@
-import { merge, Site, Page } from "../../../deps/lume.ts";
-import { addClassToHast, getHighlighter, ShikijiTransformer } from "../../../deps/shikiji.ts";
-
+import { fromHighlighter } from "./deps/markdown-it-shikiji.ts";
+import { getHighlighter, ShikijiTransformer } from "./deps/shikiji.ts";
+import { merge, Page, Site } from "./deps/lume.ts";
 import createCSSTheme from "./createCSSTheme.ts";
-import { unescape } from "./utils.ts";
 
 export interface Options {
   /** The list of extensions this plugin applies to */
@@ -12,17 +11,14 @@ export interface Options {
   cssSelector?: string;
 
   extraCSS?: string;
+  createThemeSelector?: (theme: string) => string;
 
-  shikijiOptions: {
-    transformers?: ShikijiTransformer[];
-    /** List of languages */
-    langs?: string[];
-    langAlias?: Record<string, string>;
-    themes?: Record<string, string>;
-    defaultColor?: string | false;
-    cssVariablePrefix?: string;
-    createThemeSelector?: (theme: string) => string;
-  };
+  transformers?: ShikijiTransformer[];
+  langs?: string[];
+  langAlias?: Record<string, string>;
+  themes?: Record<string, string>;
+  defaultColor?: string | false;
+  cssVariablePrefix?: string;
 }
 
 // Default options
@@ -35,68 +31,45 @@ export const defaults: Options = {
     border-radius: 0.25em;
   }`,
 
-  shikijiOptions: {
-    langs: ["javascript"],
-    defaultColor: "light",
-    themes: {
-      dark: "vitesse-dark",
-      light: "vitesse-light",
-    },
+  langs: ["javascript"],
+  defaultColor: "light",
+  themes: {
+    dark: "vitesse-dark",
+    light: "vitesse-light",
   },
 };
 
-export default async (userOptions?: Options) => {
+export default async function shikiji(userOptions: Options) {
   const options = merge(defaults, userOptions);
-  const shikijiOptions = merge(defaults.shikijiOptions, options.shikijiOptions);
 
   const highlighter = await getHighlighter({
-    themes: Object.values(shikijiOptions.themes),
-    langs: shikijiOptions.langs,
+    themes: Object.values(options.themes) ?? [],
+    langs: Object.values(options.langs) ?? [],
   });
 
   const cssText = [
     options.extraCSS,
-    ...Object.keys(shikijiOptions.themes).map((theme) =>
-      createCSSTheme(theme, shikijiOptions)
+    ...Object.keys(options.themes).map((theme) =>
+      createCSSTheme(theme, options)
     ),
   ].join("\n\n");
 
   return (site: Site) => {
-    site.process(options.extensions, (pages) => pages.forEach(highlight));
+    const markdownItPlugin = fromHighlighter(highlighter, {
+      transformers: options.transformers,
+      themes: options.themes,
+      defaultColor: options.defaultColor,
+      highlightLines: false,
+    });
 
-    const highlight = (page: Page) => {
-      // Add CSS styles
+    site.hooks.addMarkdownItPlugin(markdownItPlugin);
+
+    site.process(options.extensions, (pages) => pages.forEach(injectCSS));
+
+    const injectCSS = (page: Page) => {
       const style = page.document!.createElement("style");
       style.textContent = cssText;
       page.document!.head.append(style);
-
-      // Highlight
-      page
-        .document!.querySelectorAll(options.cssSelector!)
-        .forEach((element) => {
-          const matches = element.className.match(/language-(\w+)/);
-          if (matches) {
-            const lang = matches[1];
-            const div = page.document!.createElement("div");
-            div.innerHTML = highlighter.codeToHtml(
-              unescape(element.innerHTML),
-              {
-                lang,
-                themes: shikijiOptions.themes,
-                defaultColor: shikijiOptions.defaultColor,
-                transformers: [
-                  {
-                    code(node: Parameters<typeof addClassToHast>[0]) {
-                      addClassToHast(node, `language-${lang}`);
-                    },
-                  },
-                  ...shikijiOptions.transformers,
-                ],
-              },
-            );
-            element.replaceWith(div.querySelector("code")!);
-          }
-        });
     };
   };
-};
+}
