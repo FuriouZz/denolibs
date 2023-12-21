@@ -1,7 +1,7 @@
 import { fromHighlighter } from "./deps/markdown-it-shikiji.ts";
 import { getHighlighter, ShikijiTransformer } from "./deps/shikiji.ts";
 import { merge, Page, Site } from "./deps/lume.ts";
-import createCSSTheme from "./createCSSTheme.ts";
+import createStyles, { CreateStylesOptions } from "./createStyles.ts";
 
 export interface Options {
   /** The list of extensions this plugin applies to */
@@ -10,15 +10,20 @@ export interface Options {
   /** The css selector to apply prism */
   cssSelector?: string;
 
+  /** Append css */
   extraCSS?: string;
-  createThemeSelector?: (theme: string) => string;
 
-  transformers?: ShikijiTransformer[];
-  langs?: string[];
-  langAlias?: Record<string, string>;
-  themes?: Record<string, string>;
-  defaultColor?: string | false;
-  cssVariablePrefix?: string;
+  /** Configure theme styling */
+  themeStyling?: Omit<CreateStylesOptions, "useDefaultTheme">;
+
+  /** shikiji options */
+  shikijiOptions: {
+    transformers?: ShikijiTransformer[];
+    themes?: Record<string, string>;
+    defaultColor?: string | false;
+    langs?: string[];
+    langAlias?: Record<string, string>;
+  };
 }
 
 // Default options
@@ -27,38 +32,47 @@ export const defaults: Options = {
   cssSelector: "pre code",
 
   extraCSS: `.shiki {
-    padding: 0.5em;
+    padding: 24px;
     border-radius: 0.25em;
   }`,
 
-  langs: ["javascript"],
-  defaultColor: "light",
-  themes: {
-    dark: "vitesse-dark",
-    light: "vitesse-light",
+  shikijiOptions: {
+    langs: ["javascript"],
+    themes: {
+      dark: "vitesse-dark",
+      light: "vitesse-light",
+    },
   },
 };
 
 export default async function shikiji(userOptions: Options) {
   const options = merge(defaults, userOptions);
+  const shikiji = merge(defaults.shikijiOptions, userOptions.shikijiOptions);
 
   const highlighter = await getHighlighter({
-    themes: Object.values(options.themes) ?? [],
-    langs: Object.values(options.langs) ?? [],
+    themes: Object.values(shikiji.themes) ?? [],
+    langs: Object.values(shikiji.langs) ?? [],
   });
 
   const cssText = [
     options.extraCSS,
-    ...Object.keys(options.themes).map((theme) =>
-      createCSSTheme(theme, options)
-    ),
-  ].join("\n\n");
+    Object.entries(shikiji.themes).map(([name, theme]) => {
+      const data = highlighter.getTheme(theme);
+      return createStyles(name, data, {
+        ...options.themeStyling,
+        useDefaultTheme: !!shikiji.defaultColor,
+      });
+    }),
+  ].flat().join("\n\n");
 
   return (site: Site) => {
+console.log(shikiji);
+
+
     const markdownItPlugin = fromHighlighter(highlighter, {
-      transformers: options.transformers,
-      themes: options.themes,
-      defaultColor: options.defaultColor,
+      transformers: shikiji.transformers,
+      themes: shikiji.themes,
+      defaultColor: shikiji.defaultColor,
       highlightLines: false,
     });
 

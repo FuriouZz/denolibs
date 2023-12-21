@@ -1,5 +1,5 @@
 {
-  "name": "Deno",
+  "name": "denolibs",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -8,6 +8,8 @@
       "settings": {
         "deno.enable": true,
         "deno.lint": true,
+        "deno.cacheOnSave": true,
+        "deno.config": "/workspaces/denolibs/deno.json",
         "editor.defaultFormatter": "denoland.vscode-deno"
       },
       "extensions": [
