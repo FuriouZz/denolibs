@@ -6,12 +6,12 @@ const cssRulesBase: OnCreateStyleHook = (
   { cssVariablePrefix },
 ) => {
   return `
-  .shiki {
-    background-color: var(${cssVariablePrefix}-bg);
-  }
-  .shiki span {
-    color: var(${cssVariablePrefix});
-  }`;
+.shiki {
+  background-color: var(${cssVariablePrefix}-bg);
+}
+.shiki span {
+  color: var(${cssVariablePrefix});
+}`;
 };
 
 export default function createThemeStyle(

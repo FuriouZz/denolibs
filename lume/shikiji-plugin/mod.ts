@@ -17,8 +17,7 @@ export const defaults: Required<CommonOptions> = {
   padding: 24px;
   border-radius: 0.25em;
   box-sizing: border-box;
-}
-`,
+}`,
   highlighter: {},
   transformers: [],
   cssVariablePrefix: "--shiki-",

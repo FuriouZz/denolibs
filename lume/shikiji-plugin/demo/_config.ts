@@ -54,6 +54,8 @@ if (Deno.env.has("SINGLE")) {
 
       defaultColor: "light",
 
+      cssFile: "/shikiji.css",
+
       themeStyles: [
         cssRulesDiff,
         cssRulesErrorLevel,

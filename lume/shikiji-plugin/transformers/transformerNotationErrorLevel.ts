@@ -43,7 +43,7 @@ export const cssRulesErrorLevel: OnCreateStyleHook = (
     );
     css += `
 .shiki.has-highlighted {
-  ${properties.join(";\n    ")};
+  ${properties.join(";\n  ")};
 }`;
   }
 

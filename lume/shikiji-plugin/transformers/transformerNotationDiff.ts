@@ -65,7 +65,7 @@ export const cssRulesDiff: OnCreateStyleHook = (
 
     css += `
 .shiki.has-diff {
-  ${properties.join(";\n    ")};
+  ${properties.join(";\n  ")};
 }`;
   }
 
