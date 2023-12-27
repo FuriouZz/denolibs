@@ -30,32 +30,32 @@ export const cssRulesDiff: OnCreateStyleHook = (
     & Partial<OnTransformerCSSRulesOptions>,
 ) => {
   let css = `
-    .shiki.has-diff .line.diff {
-      display: inline-block;
-      width: calc(100% + 48px);
-      margin: 0 -24px;
-      padding: 0 24px;
-      transition: background-color .5s;
-    }
-    .shiki.has-diff .line.diff:before {
-      position: absolute;
-      left: 10px;
-    }
-    .shiki.has-diff .line.diff.add {
-      background-color: var(${cssVariablePrefix}-diff-add-bg);
-    }
-    .shiki.has-diff .line.diff.add:before {
-      content: "+";
-      color: var(${cssVariablePrefix}-diff-add);
-    }
-    .shiki.has-diff .line.diff.remove {
-      background-color: var(${cssVariablePrefix}-diff-remove-bg);
-      opacity: 0.7;
-    }
-    .shiki.has-diff .line.diff.remove:before {
-      content: "-";
-      color: var(${cssVariablePrefix}-diff-remove);
-    }`;
+.shiki.has-diff .line.diff {
+  display: inline-block;
+  width: 100%;
+  margin: 0 -24px;
+  padding: 0 24px;
+  transition: background-color .5s;
+}
+.shiki.has-diff .line.diff:before {
+  position: absolute;
+  left: 10px;
+}
+.shiki.has-diff .line.diff.add {
+  background-color: var(${cssVariablePrefix}-diff-add-bg);
+}
+.shiki.has-diff .line.diff.add:before {
+  content: "+";
+  color: var(${cssVariablePrefix}-diff-add);
+}
+.shiki.has-diff .line.diff.remove {
+  background-color: var(${cssVariablePrefix}-diff-remove-bg);
+  opacity: 0.7;
+}
+.shiki.has-diff .line.diff.remove:before {
+  content: "-";
+  color: var(${cssVariablePrefix}-diff-remove);
+}`;
 
   if (addColors) {
     const colors = color.includes("dark") ? colorsDiff.dark : colorsDiff.light;
@@ -64,9 +64,9 @@ export const cssRulesDiff: OnCreateStyleHook = (
     );
 
     css += `
-    .shiki.has-diff {
-      ${properties.join(";\n    ")};
-    }`;
+.shiki.has-diff {
+  ${properties.join(";\n    ")};
+}`;
   }
 
   return css;

@@ -20,16 +20,16 @@ export const cssRulesHighlight: OnCreateStyleHook = (
     & Partial<OnTransformerCSSRulesOptions>,
 ) => {
   let css = `
-    .shiki.has-highlighted .line.highlighted {
-      display: inline-block;
-      width: calc(100% + 48px);
-      margin: 0 -24px;
-      padding: 0 24px;
-      transition: background-color .5s;
-    }
-    .shiki.has-highlighted .line.highlighted {
-      background-color: var(${cssVariablePrefix}-highlighted-bg);
-    }`;
+.shiki.has-highlighted .line.highlighted {
+  display: inline-block;
+  width: 100%;
+  margin: 0 -24px;
+  padding: 0 24px;
+  transition: background-color .5s;
+}
+.shiki.has-highlighted .line.highlighted {
+  background-color: var(${cssVariablePrefix}-highlighted-bg);
+}`;
 
   if (addColors) {
     const colors = color.includes("dark")
@@ -40,9 +40,9 @@ export const cssRulesHighlight: OnCreateStyleHook = (
       `${cssVariablePrefix}-${key}: ${value}`
     );
     css += `
-    .shiki.has-highlighted {
-      ${properties.join(";\n    ")};
-    }`;
+.shiki.has-highlighted {
+  ${properties.join(";\n    ")};
+}`;
   }
 
   return css;

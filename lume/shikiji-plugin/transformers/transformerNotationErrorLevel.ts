@@ -26,12 +26,12 @@ export const cssRulesErrorLevel: OnCreateStyleHook = (
     & Partial<OnTransformerCSSRulesOptions>,
 ) => {
   let css = `
-    .shiki.has-highlighted .line.highlighted.warning {
-      background-color: var(${cssVariablePrefix}-highlighted-warning-bg);
-    }
-    .shiki.has-highlighted .line.highlighted.error {
-      background-color: var(${cssVariablePrefix}-highlighted-error-bg);
-    }`;
+.shiki.has-highlighted .line.highlighted.warning {
+  background-color: var(${cssVariablePrefix}-highlighted-warning-bg);
+}
+.shiki.has-highlighted .line.highlighted.error {
+  background-color: var(${cssVariablePrefix}-highlighted-error-bg);
+}`;
 
   if (addColors) {
     const colors = color.includes("dark")
@@ -42,9 +42,9 @@ export const cssRulesErrorLevel: OnCreateStyleHook = (
       `${cssVariablePrefix}-${key}: ${value}`
     );
     css += `
-    .shiki.has-highlighted {
-      ${properties.join(";\n    ")};
-    }`;
+.shiki.has-highlighted {
+  ${properties.join(";\n    ")};
+}`;
   }
 
   return css;
