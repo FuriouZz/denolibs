@@ -19,7 +19,7 @@ if (Deno.env.has("SINGLE")) {
     await shikiji({
       highlighter: {
         langs: ["javascript"],
-        themes: ["github-dark", "github-light"],
+        themes: ["github-light"],
       },
 
       theme: "github-light",

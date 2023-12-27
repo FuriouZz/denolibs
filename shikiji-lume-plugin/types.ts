@@ -13,6 +13,10 @@ export type ShikijiThemes<Themes extends string = string> =
   | ThemeRegistrationRaw
   | StringLiteralUnion<Themes>;
 
+export interface OnTransformerCSSRulesOptions {
+  addColors: boolean;
+}
+
 export interface CreateThemeStyleOptions {
   /**
    * Theme color
@@ -77,18 +81,20 @@ export interface MultiThemesOptions<Themes extends string = string> {
   defaultColor?: string | false;
 }
 
-export type OptionsThemes<Themes extends string = string> =
+export type ThemeOptions<Themes extends string = string> =
   | SingleThemeOptions<Themes>
   | MultiThemesOptions<Themes>;
 
 export type Options<TThemes extends string = string> =
-  & {
-    highlighter?: BundledHighlighterOptions<BuiltinLanguage, BuiltinTheme>;
-  }
   & CommonOptions
-  & OptionsThemes<TThemes>;
+  & ThemeOptions<TThemes>;
 
-export interface CommonOptions extends Omit<CreateThemeStyleOptions, "scope"> {
+export interface CommonOptions extends Omit<CreateThemeStyleOptions, "color"> {
+  /**
+   * Highlighter options to configure theme and languages to load
+   */
+  highlighter?: BundledHighlighterOptions<BuiltinLanguage, BuiltinTheme>;
+
   /**
    * The list of extensions this plugin applies to
    * @default [".html"]
@@ -105,8 +111,4 @@ export interface CommonOptions extends Omit<CreateThemeStyleOptions, "scope"> {
    * Transform the generated HAST tree.
    */
   transformers?: ShikijiTransformer[];
-}
-
-export interface OnTransformerCSSRulesOptions {
-  addColors: boolean;
 }
