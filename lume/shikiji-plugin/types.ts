@@ -71,7 +71,7 @@ export interface MultiThemesOptions<Themes extends string = string> {
    *
    * @see https://github.com/antfu/shikiji#lightdark-dual-themes
    */
-  themes?: Record<string, ShikijiThemes<Themes>>;
+  themes: Record<string, ShikijiThemes<Themes>>;
 
   /**
    * Add [data-color] attribute to body element
@@ -91,15 +91,21 @@ export type Options<TThemes extends string = string> =
 
 export interface CommonOptions extends Omit<CreateThemeStyleOptions, "color"> {
   /**
-   * Highlighter options to configure theme and languages to load
-   */
-  highlighter?: BundledHighlighterOptions<BuiltinLanguage, BuiltinTheme>;
-
-  /**
    * The list of extensions this plugin applies to
    * @default [".html"]
    */
   extensions?: string[];
+
+  /**
+   * Set the css filename for all generated styles, Set to false to insert a style tag per page.
+   * @default "/shikiji.css"
+   */
+  cssFile?: string | false;
+
+  /**
+   * Highlighter options to configure theme and languages to load
+   */
+  highlighter?: BundledHighlighterOptions<BuiltinLanguage, BuiltinTheme>;
 
   /**
    * Inject extra CSS to <head> tag

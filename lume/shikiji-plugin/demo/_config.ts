@@ -16,7 +16,7 @@ const site = lume();
 
 if (Deno.env.has("SINGLE")) {
   site.use(
-    await shikiji({
+    shikiji({
       highlighter: {
         langs: ["javascript"],
         themes: ["github-light"],
@@ -41,7 +41,7 @@ if (Deno.env.has("SINGLE")) {
   );
 } else {
   site.use(
-    await shikiji({
+    shikiji({
       highlighter: {
         langs: ["javascript"],
         themes: ["github-dark", "github-light"],
