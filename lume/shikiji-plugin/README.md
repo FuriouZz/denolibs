@@ -1,7 +1,16 @@
 # Shikiji plugin for [Lume](https://lume.land/)
 
-This plugin uses the [shikiji](https://shikiji.netlify.app/) library to search and syntax
-highlight the code of any `<pre><code>` element.
+This plugin uses [shikiji](https://shikiji.netlify.app/) library to search and syntax highlight the code of any `<pre><code>` element.
+
+It exists a [markdown-it plugin](https://shikiji.netlify.app/packages/markdown-it) for Shikiji, but we made the choice to be engine agnostic.
+
+Moreover, this plugin adds a couple of advantages for CSS customisation:
+* Add extra CSS
+* Generate CSS by theme
+* Generate defaults CSS for [common-transformers](https://shikiji.netlify.app/packages/transformers)
+* Inject CSS into a `<style>` tag or a `cssFile`
+
+Check the [demo](./demo/_config.ts) directory.
 
 ## Installation
 
@@ -11,43 +20,9 @@ Import this plugin in your `_config.ts` file to use it:
 import lume from "https://deno.land/x/lume/mod.ts";
 import shikiji from "https://deno.land/x/furiouzz/lume/plugins/shikiji/mod.ts";
 
-import {
-  cssRulesDiff,
-  cssRulesErrorLevel,
-  cssRulesFocus,
-  cssRulesHighlight,
-  transformerNotationDiff,
-  transformerNotationErrorLevel,
-  transformerNotationFocus,
-  transformerNotationHighlight,
-} from "../transformers/mod.ts";
-
 const site = lume();
 
-site.use(
-  shikiji({
-    highlighter: {
-      langs: ["javascript"],
-      themes: ["github-light"],
-    },
-
-    theme: "github-light",
-
-    themeStyles: [
-      cssRulesDiff,
-      cssRulesErrorLevel,
-      cssRulesFocus,
-      cssRulesHighlight,
-    ],
-
-    transformers: [
-      transformerNotationDiff(),
-      transformerNotationErrorLevel(),
-      transformerNotationFocus(),
-      transformerNotationHighlight(),
-    ],
-  })
-);
+site.use(shikiji(/* Options */));
 
 export default site;
 ```
@@ -138,4 +113,51 @@ const options: {
    */
   defaultColor?: string | false;
 }
+```
+
+## Full examples
+
+```ts
+import lume from "https://deno.land/x/lume/mod.ts";
+import shikiji from "https://deno.land/x/furiouzz/lume/plugins/shikiji/mod.ts";
+
+import {
+  cssRulesDiff,
+  cssRulesErrorLevel,
+  cssRulesFocus,
+  cssRulesHighlight,
+  transformerNotationDiff,
+  transformerNotationErrorLevel,
+  transformerNotationFocus,
+  transformerNotationHighlight,
+} from "../transformers/mod.ts";
+
+const site = lume();
+
+site.use(
+  shikiji({
+    highlighter: {
+      langs: ["javascript"],
+      themes: ["github-light"],
+    },
+
+    theme: "github-light",
+
+    themeStyles: [
+      cssRulesDiff,
+      cssRulesErrorLevel,
+      cssRulesFocus,
+      cssRulesHighlight,
+    ],
+
+    transformers: [
+      transformerNotationDiff(),
+      transformerNotationErrorLevel(),
+      transformerNotationFocus(),
+      transformerNotationHighlight(),
+    ],
+  })
+);
+
+export default site;
 ```
