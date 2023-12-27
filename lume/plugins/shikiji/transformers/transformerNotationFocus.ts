@@ -17,7 +17,7 @@ export const cssRulesFocus: OnCreateStyleHook = () => {
   .shiki.has-focused .line:not(.focused) {
     filter: blur(0.095rem);
     opacity: 0.7;
-    transition: filter 0.35s, opacity: 0.35s;
+    transition: filter 0.35s, opacity 0.35s;
   }
   .shiki.has-focused:hover .line:not(.focused) {
     filter: blur(0);

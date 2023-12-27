@@ -13,15 +13,12 @@ export * from "./types.ts";
 // Default options
 export const defaults: LumeShikijiPluginOptions = {
   extensions: [".html"],
-  shikiji: {
-    theme: "vitesse-light",
-    extraCSS: `
-    .shiki {
-      padding: 24px;
-      border-radius: 0.25em;
-    }
-    `,
-  },
+  theme: "vitesse-light",
+  extraCSS: `
+  .shiki {
+    padding: 24px;
+    border-radius: 0.25em;
+  }`,
 };
 
 export default async function lumeShikijiPlugin<
@@ -29,11 +26,11 @@ export default async function lumeShikijiPlugin<
 >(userOptions: LumeShikijiPluginOptions<Themes>) {
   const options = merge(defaults, userOptions);
 
-  const shikiji = merge(defaults.shikiji, userOptions.shikiji);
+  const { extensions, ...shikiji } = options;
 
   // Delete default theme field
   if (
-    "themes" in userOptions.shikiji && !("theme" in userOptions.shikiji)
+    "themes" in userOptions && !("theme" in userOptions)
   ) {
     // deno-lint-ignore ban-ts-comment
     // @ts-ignore
@@ -49,10 +46,11 @@ export default async function lumeShikijiPlugin<
 
   if ("theme" in shikiji) {
     themes.push(shikiji.theme);
+    cssRules.push(createThemeStyle(shikiji));
   } else if ("themes" in shikiji) {
     themes.push(...Object.values(shikiji.themes));
 
-    defaultColor = shikiji.defaultColor;
+    defaultColor = shikiji.defaultColor ?? false;
     scope = shikiji.scope ?? defaultColor ? "selector" : "scheme";
     if (defaultColor && scope === "scheme") {
       console.warn(
@@ -61,9 +59,9 @@ export default async function lumeShikijiPlugin<
       scope = "selector";
     }
 
-    const rules = Object.keys(shikiji.themes).map((color) => {
-      return createThemeStyle(color, shikiji);
-    });
+    const rules = Object.keys(shikiji.themes).map((color) =>
+      createThemeStyle({ ...shikiji, color })
+    );
     cssRules.push(...rules);
   }
 
@@ -94,7 +92,7 @@ export default async function lumeShikijiPlugin<
 
     site.hooks.addMarkdownItPlugin(markdownItPlugin);
 
-    site.process(options.extensions, (pages) => {
+    site.process(extensions, (pages) => {
       pages.forEach((page) => {
         injectCSS(page);
         setDefaultColor(page);

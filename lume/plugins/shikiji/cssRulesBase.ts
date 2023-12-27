@@ -1,13 +1,13 @@
 import { OnCreateStyleHook } from "./types.ts";
 
 export const cssRulesBase: OnCreateStyleHook = (
-  { color, cssVariablePrefix },
+  { cssVariablePrefix },
 ) => {
   return `
   .shiki {
-    background-color: var(${cssVariablePrefix}${color}-bg);
+    background-color: var(${cssVariablePrefix}-bg);
   }
   .shiki span {
-    color: var(${cssVariablePrefix}${color});
+    color: var(${cssVariablePrefix});
   }`;
 };

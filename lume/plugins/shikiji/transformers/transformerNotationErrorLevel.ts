@@ -1,4 +1,8 @@
-import { OnCreateStyleHook } from "../types.ts";
+import {
+  GetStylesOptions,
+  OnCreateStyleHook,
+  OnTransformerCSSRulesOptions,
+} from "../types.ts";
 
 export {
   transformerNotationErrorLevel,
@@ -17,29 +21,31 @@ export const colorsErrorLevel = {
 };
 
 export const cssRulesErrorLevel: OnCreateStyleHook = (
-  { color, cssVariablePrefix },
+  { color, cssVariablePrefix, addColors=true }:
+    & GetStylesOptions
+    & Partial<OnTransformerCSSRulesOptions>,
 ) => {
-  return `
-  .shiki.has-highlighted .line.highlighted.warning {
-    background-color: var(${cssVariablePrefix}${color}-highlighted-warning-bg);
+  let css = `
+    .shiki.has-highlighted .line.highlighted.warning {
+      background-color: var(${cssVariablePrefix}-highlighted-warning-bg);
+    }
+    .shiki.has-highlighted .line.highlighted.error {
+      background-color: var(${cssVariablePrefix}-highlighted-error-bg);
+    }`;
+
+  if (addColors) {
+    const colors = color.includes("dark")
+      ? colorsErrorLevel.dark
+      : colorsErrorLevel.light;
+
+    const properties = Object.entries(colors).map(([key, value]) =>
+      `${cssVariablePrefix}-${key}: ${value}`
+    );
+    css += `
+    .shiki.has-highlighted {
+      ${properties.join(";\n    ")};
+    }`;
   }
-  .shiki.has-highlighted .line.highlighted.error {
-    background-color: var(${cssVariablePrefix}${color}-highlighted-error-bg);
-  }`;
-};
 
-export const cssRulesErrorLevelColors: OnCreateStyleHook = (
-  { color, cssVariablePrefix },
-) => {
-  const colors = color.includes("dark")
-    ? colorsErrorLevel.dark
-    : colorsErrorLevel.light;
-
-  const properties = Object.entries(colors).map(([key, value]) =>
-    `${cssVariablePrefix}${color}-${key}: ${value}`
-  );
-  return `
-  .shiki.has-highlighted {
-    ${properties.join(";\n    ")};
-  }`;
+  return css;
 };

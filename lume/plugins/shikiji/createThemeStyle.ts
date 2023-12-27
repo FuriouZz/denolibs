@@ -3,36 +3,37 @@ import { cssRulesBase } from "./cssRulesBase.ts";
 import { CreateThemeStyleOptions } from "./types.ts";
 
 export const defaults: Required<CreateThemeStyleOptions> = {
-  themes: {
-    light: "vitesse-light",
-    dark: "vitesse-dark",
-  },
-  defaultColor: "light",
+  color: "",
   cssVariablePrefix: "--shiki-",
   scope: "scheme",
   onCreateStyle: () => "",
 };
 
 export default function createThemeStyle(
-  color: string,
   options?: CreateThemeStyleOptions,
 ) {
   const {
+    color,
     cssVariablePrefix,
     scope,
     onCreateStyle,
   } = merge(defaults, options);
 
-  let css = cssRulesBase({ color, cssVariablePrefix });
+  let _cssVariablePrefix = cssVariablePrefix;
+  if (color) _cssVariablePrefix += color;
+
+  let css = cssRulesBase({ color, cssVariablePrefix: _cssVariablePrefix });
 
   if (onCreateStyle) {
-    css += onCreateStyle({ color, cssVariablePrefix });
+    css += onCreateStyle({ color, cssVariablePrefix: _cssVariablePrefix });
   }
 
-  if (scope === "selector") {
-    css = css.replaceAll(".shiki", `[data-color=${color}] .shiki`);
-  } else {
-    css = `@media (prefers-color-scheme: ${color}) {\n${css}\n}`;
+  if (color) {
+    if (scope === "selector") {
+      css = css.replaceAll(".shiki", `[data-color=${color}] .shiki`);
+    } else if (scope === "scheme") {
+      css = `@media (prefers-color-scheme: ${color}) {\n${css}\n}`;
+    }
   }
 
   return css;

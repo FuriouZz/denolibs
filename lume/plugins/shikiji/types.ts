@@ -10,20 +10,59 @@ export type ShikijiThemes<Themes extends string = string> =
   | ThemeRegistrationRaw
   | StringLiteralUnion<Themes>;
 
+export interface CreateThemeStyleOptions {
+  /**
+   * Theme color
+   * @default ''
+   */
+  color?: string;
+
+  /**
+   * Prefix of CSS variables used to store the color of the other theme.
+   * @default '--shiki-'
+   */
+  cssVariablePrefix?: string;
+
+  /**
+   * CSS Scope
+   * @default 'scheme'
+   */
+  scope?: "scheme" | "selector" | false;
+
+  /**
+   * Hook to create CSS rules by theme color
+   */
+  onCreateStyle?: (options: GetStylesOptions) => string;
+}
+
 export interface GetStylesOptions {
   /**
-   * theme color
+   * Theme color to style
    */
   color: string;
 
   /**
    * Prefix of CSS variables used to store the color of the other theme.
-   * @default "--shiki-"
+   * @default '--shiki-'
    */
   cssVariablePrefix: string;
 }
 
-export interface CreateThemeStyleOptions<Themes extends string = string> {
+export type OnCreateStyleHook = Required<
+  CreateThemeStyleOptions
+>["onCreateStyle"];
+
+export interface LumeShikijiSingleTheme<Themes extends string = string>
+  extends CreateThemeStyleOptions {
+  /**
+   * Single theme used
+   * @default 'vitesse-light'
+   */
+  theme: ShikijiThemes<Themes>;
+}
+
+export interface LumeShikijiMultiThemes<Themes extends string = string>
+  extends CreateThemeStyleOptions {
   /**
    * A map of color names to themes.
    * This allows you to specify multiple themes for the generated code.
@@ -38,62 +77,45 @@ export interface CreateThemeStyleOptions<Themes extends string = string> {
    * @default false
    */
   defaultColor?: string | false;
-
-  /**
-   * Prefix of CSS variables used to store the color of the other theme.
-   * @default '--shiki-'
-   */
-  cssVariablePrefix?: string;
-
-  /**
-   * CSS Scope
-   * @default 'scheme'
-   */
-  scope?: "scheme" | "selector";
-
-  /**
-   * Hook to create CSS rules by theme color
-   */
-  onCreateStyle?: (options: GetStylesOptions) => string;
 }
 
-export type OnCreateStyleHook = Required<CreateThemeStyleOptions>["onCreateStyle"];
+export type LumeShikijiCodeOptionsThemes<Themes extends string = string> =
+  | LumeShikijiSingleTheme<Themes>
+  | LumeShikijiMultiThemes<Themes>;
 
-export type LumeShikijiCodeOptionsThemes<Themes extends string = string> = {
-  /**
-   * Single theme used
-   * @default 'vitesse-light'
-   */
-  theme: ShikijiThemes<Themes>;
-} | CreateThemeStyleOptions<Themes>;
+export type LumeShikijiPluginOptions<Themes extends string = string> =
+  & LumeShikijiCodeOptionsThemes<Themes>
+  & {
+    /**
+     * The list of extensions this plugin applies to
+     * @default [".html"]
+     */
+    extensions?: string[];
 
-export interface LumeShikijiPluginOptions<Themes extends string = string> {
-  extensions?: string[];
-  cssSelector?: string;
-  shikiji:
-    & LumeShikijiCodeOptionsThemes<Themes>
-    & {
-      /**
-       * Inject extra CSS to <head> tag
-       */
-      extraCSS?: string;
+    /**
+     * Inject extra CSS to <head> tag
+     * @default ".shiki {padding: 24px;border-radius: 0.25em;}"
+     */
+    extraCSS?: string;
 
-      /**
-       * Transform the generated HAST tree.
-       */
-      transformers?: ShikijiTransformer[];
+    /**
+     * Transform the generated HAST tree.
+     */
+    transformers?: ShikijiTransformer[];
 
-      /**
-       * Language registation
-       *
-       * @default Object.keys(bundledLanguages)
-       */
-      langs?: string[];
+    /**
+     * Language registation
+     * @default Object.keys(bundledLanguages)
+     */
+    langs?: string[];
 
-      /**
-       * Alias of languages
-       * @example { 'my-lang': 'javascript' }
-       */
-      langAlias?: Record<string, string>;
-    };
+    /**
+     * Alias of languages
+     * @example {"my-lang":"javascript"}
+     */
+    langAlias?: Record<string, string>;
+  };
+
+export interface OnTransformerCSSRulesOptions {
+  addColors: boolean
 }
