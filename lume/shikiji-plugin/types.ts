@@ -98,7 +98,7 @@ export interface CommonOptions extends Omit<CreateThemeStyleOptions, "color"> {
 
   /**
    * Set the css filename for all generated styles, Set to false to insert a style tag per page.
-   * @default "/shikiji.css"
+   * @default false
    */
   cssFile?: string | false;
 

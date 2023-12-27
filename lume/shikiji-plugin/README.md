@@ -25,7 +25,7 @@ import {
 const site = lume();
 
 site.use(
-  await shikiji({
+  shikiji({
     highlighter: {
       langs: ["javascript"],
       themes: ["github-light"],
@@ -61,6 +61,12 @@ const options: {
    * @default [".html"]
    */
   extensions?: string[];
+
+  /**
+   * Set the css filename for all generated styles, Set to false to insert a style tag per page.
+   * @default false
+   */
+  cssFile?: string | string
 
   /**
    * Highlighter options to configure theme and languages to load
