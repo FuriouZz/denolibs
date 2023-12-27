@@ -3,7 +3,7 @@ import { GetStylesOptions, OnCreateStyleHook, OnTransformerCSSRulesOptions } fro
 export {
   transformerNotationHighlight,
   type TransformerNotationHighlightOptions,
-} from "../deps/shikiji-transformers.ts";
+} from "../deps.ts";
 
 export const colorsHighlight = {
   light: {

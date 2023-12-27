@@ -3,7 +3,7 @@ import { OnCreateStyleHook } from "../types.ts";
 export {
   transformerNotationFocus,
   type TransformerNotationFocusOptions,
-} from "../deps/shikiji-transformers.ts";
+} from "../deps.ts";
 
 export const cssRulesFocus: OnCreateStyleHook = () => {
   return `

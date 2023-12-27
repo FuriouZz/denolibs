@@ -7,7 +7,7 @@ import {
 export {
   transformerNotationErrorLevel,
   type TransformerNotationErrorLevelOptions,
-} from "../deps/shikiji-transformers.ts";
+} from "../deps.ts";
 
 export const colorsErrorLevel = {
   light: {

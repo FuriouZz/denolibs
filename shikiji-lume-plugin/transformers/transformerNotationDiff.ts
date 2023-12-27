@@ -7,7 +7,7 @@ import {
 export {
   transformerNotationDiff,
   type TransformerNotationDiffOptions,
-} from "../deps/shikiji-transformers.ts";
+} from "../deps.ts";
 
 export const colorsDiff = {
   light: {
