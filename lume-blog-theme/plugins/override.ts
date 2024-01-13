@@ -1,79 +1,37 @@
 import Site from "lume/core/site.ts";
 import { merge } from "lume/core/utils/object.ts";
-import { join, relative } from "lume/deps/path.ts";
+import { walkSync } from "lume/deps/fs.ts";
+import { fromFileUrl, toFileUrl, relative } from "lume/deps/path.ts";
 
 export interface Options {
   /**
    * Root path where files are located
-   * @default Deno.cwd()
+   * @default "./_override"
    */
-  rootPath?: string;
+  path: string;
 
   /**
    * Files that needs to be overrided or created if missing
    * @default []
    */
-  entries: string[];
+  ignores?: RegExp[];
 }
 
 export const defaults: Required<Options> = {
-  rootPath: ".",
-  entries: [],
+  path: "./_override",
+  ignores: [],
 };
 
 export default function override(userOptions?: Options) {
-  const { rootPath, entries } = merge(defaults, userOptions);
-  const files = new Map<string, string>();
-
-  let absRootPath: string;
-
-  const append = (site: Site, path: string) => {
-    const file = relative(absRootPath, path);
-    site.remoteFile(file, import.meta.resolve(path));
-    files.set(`/${join(rootPath, file)}`, `/${file}`);
-  };
-
-  const walkDir = (site: Site, dir: string) => {
-    for (const entry of Deno.readDirSync(dir)) {
-      if (entry.isFile) {
-        append(site, join(dir, entry.name));
-        continue;
-      }
-
-      if (entry.isDirectory) {
-        walkDir(site, join(dir, entry.name));
-      }
-    }
-  };
+  const { path, ignores: skip } = merge(defaults, userOptions);
 
   return (site: Site) => {
-    absRootPath = join(site.src(), rootPath);
-    site.ignore(rootPath);
-
-    for (const entry of entries.map((entry) => join(absRootPath, entry))) {
-      try {
-        const info = Deno.statSync(entry);
-
-        if (info.isFile) {
-          append(site, entry);
-          continue;
-        }
-
-        if (info.isDirectory) {
-          walkDir(site, entry);
-        }
-      } catch (_) {
-        console.warn("Entry does not exist: ", entry);
-      }
+    for (const entry of walkSync(fromFileUrl(path), {
+      includeDirs: false,
+      skip,
+    })) {
+      const src = toFileUrl(entry.path).toString();
+      site.remoteFile("/" + relative(path, src), src);
     }
-
-    site.addEventListener("afterUpdate", (e) => {
-      const entries = [...e.files]
-        .filter((file) => files.has(file))
-        .map((file) => files.get(file)!);
-      if (entries.length > 0) {
-        site.update(new Set(entries));
-      }
-    });
   };
 }

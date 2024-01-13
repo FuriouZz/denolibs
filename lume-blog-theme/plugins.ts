@@ -17,6 +17,7 @@ import footnotes from "https://deno.land/x/lume_markdown_plugins@v0.7.0/footnote
 
 import emoji from "./plugins/emoji.ts";
 import showLabel from "./plugins/showLabel.ts";
+import override from "./plugins/override.ts";
 import shikiji, {
   shikijiExtra,
   Options as ShikijiOptions,
@@ -51,6 +52,11 @@ export default function (options: Options = {}) {
       .use(transform_images())
       .use(showLabel())
       .use(
+        override({
+          path: import.meta.resolve("./_theme")
+        })
+      )
+      .use(
         shikiji(
           options.shikiji ?? {
             highlighter: {
@@ -62,6 +68,7 @@ export default function (options: Options = {}) {
                 "bash",
                 "json",
                 "typescript",
+                "css",
               ],
             },
             themes: {

@@ -1,0 +1,613 @@
+@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: light) {
+
+.shiki {
+  background-color: var(--shiki-light-bg);
+}
+.shiki span {
+  color: var(--shiki-light);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-light-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-light-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-light-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-light-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-light-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-light-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-light-highlighted-error-bg, inherit);
+}
+}@media (prefers-color-scheme: dark) {
+
+.shiki {
+  background-color: var(--shiki-dark-bg);
+}
+.shiki span {
+  color: var(--shiki-dark);
+}
+.shiki {
+  --shiki-diff-add: var(--shiki-dark-diff-add, inherit);
+  --shiki-diff-add-bg: var(--shiki-dark-diff-add-bg, inherit);
+  --shiki-diff-remove: var(--shiki-dark-diff-remove, inherit);
+  --shiki-diff-remove-bg: var(--shiki-dark-diff-remove-bg, inherit);
+  --shiki-highlighted-bg: var(--shiki-dark-highlighted-bg, inherit);
+  --shiki-highlighted-warning-bg: var(--shiki-dark-highlighted-warning-bg, inherit);
+  --shiki-highlighted-error-bg: var(--shiki-dark-highlighted-error-bg, inherit);
+}
+}

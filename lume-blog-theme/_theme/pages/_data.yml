@@ -1,0 +1,7 @@
+layout: layouts/page.vto
+basename: ../pages
+author: nobody
+
+metas:
+  title: "=title"
+  description: ""

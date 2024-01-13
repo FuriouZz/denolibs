@@ -1,0 +1,8 @@
+type: post
+layout: layouts/post.vto
+basename: ../posts
+author: nobody
+
+metas:
+  title: "=title"
+  description: ""
