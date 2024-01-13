@@ -17,7 +17,6 @@ import footnotes from "https://deno.land/x/lume_markdown_plugins@v0.7.0/footnote
 
 import emoji from "./plugins/emoji.ts";
 import showLabel from "./plugins/showLabel.ts";
-import override from "./plugins/override.ts";
 import shikiji, {
   shikijiExtra,
   Options as ShikijiOptions,
@@ -51,16 +50,6 @@ export default function (options: Options = {}) {
       .use(emoji())
       .use(transform_images())
       .use(showLabel())
-      .use(
-        override({
-          entries: {
-            "/_includes/layouts/base.vto": import.meta.resolve("./_theme/_includes/layouts/base.vto"),
-            "/_includes/layouts/post.vto": import.meta.resolve("./_theme/_includes/layouts/post.vto"),
-            "/pages/_data.yml": import.meta.resolve("./_theme/pages/_data.yml"),
-            "/posts/_data.yml": import.meta.resolve("./_theme/posts/_data.yml"),
-          }
-        })
-      )
       .use(
         shikiji(
           options.shikiji ?? {
@@ -99,8 +88,6 @@ export default function (options: Options = {}) {
           },
         })
       )
-      .copy("favicons", ".")
-      .copy("assets")
       .copy("fonts")
       .copy("js")
       // .copy("favicon.png")

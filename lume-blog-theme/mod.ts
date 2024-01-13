@@ -10,7 +10,7 @@ export default function (options: Partial<Options> = {}) {
     site.use(plugins(options));
 
     // Add remote files
-    const files = [
+    const themeFiles = [
       "_includes/css/fonts.css",
       "_includes/css/navbar.css",
       "_includes/css/page.css",
@@ -43,8 +43,22 @@ export default function (options: Partial<Options> = {}) {
       "js/main.js",
     ];
 
-    for (const file of files) {
-      site.remoteFile(file, `https://deno.land/x/lume_theme_simple_blog@v0.13.3/src/${file}`);
+    for (const file of themeFiles) {
+      site.remoteFile(
+        file,
+        `https://deno.land/x/lume_theme_simple_blog@v0.13.3/src/${file}`
+      );
+    }
+
+    const myFiles = [
+      "_includes/layouts/base.vto",
+      "_includes/layouts/post.vto",
+      "pages/_data.yml",
+      "posts/_data.yml",
+    ];
+
+    for (const file of myFiles) {
+      site.remoteFile(file, import.meta.resolve(`./_theme/${file}`));
     }
   };
 }
