@@ -53,6 +53,7 @@ export default function (options: Partial<Options> = {}) {
     const myFiles = [
       "_includes/layouts/base.vto",
       "_includes/layouts/post.vto",
+      "_includes/templates/post-giscus.vto",
       "pages/_data.yml",
       "posts/_data.yml",
     ];
