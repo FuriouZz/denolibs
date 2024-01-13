@@ -58,7 +58,7 @@ export default function (options: Partial<Options> = {}) {
     ];
 
     for (const file of myFiles) {
-      site.remoteFile(file, import.meta.resolve(`./_theme/${file}`));
+      site.remoteFile(file, import.meta.resolve(`./theme/${file}`));
     }
   };
 }

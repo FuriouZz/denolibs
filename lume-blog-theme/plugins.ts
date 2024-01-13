@@ -9,6 +9,7 @@ import pagefind, { Options as PagefindOptions } from "lume/plugins/pagefind.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import feed from "lume/plugins/feed.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
+import picture from "lume/plugins/picture.ts";
 import transform_images from "lume/plugins/transform_images.ts";
 
 import toc from "https://deno.land/x/lume_markdown_plugins@v0.7.0/toc.ts";
@@ -48,6 +49,7 @@ export default function (options: Options = {}) {
       .use(pagefind(options.pagefind))
       .use(sitemap())
       .use(emoji())
+      .use(picture())
       .use(transform_images())
       .use(showLabel())
       .use(
@@ -90,7 +92,7 @@ export default function (options: Options = {}) {
       )
       .copy("fonts")
       .copy("js")
-      // .copy("favicon.png")
+      .copy("favicon.png")
       .preprocess([".md"], (pages) => {
         for (const page of pages) {
           page.data.excerpt ??= (page.data.content as string).split(
