@@ -53,7 +53,12 @@ export default function (options: Options = {}) {
       .use(showLabel())
       .use(
         override({
-          path: import.meta.resolve("./_theme")
+          entries: {
+            "/_includes/layouts/base.vto": import.meta.resolve("./_theme/_includes/layouts/base.vto"),
+            "/_includes/layouts/post.vto": import.meta.resolve("./_theme/_includes/layouts/post.vto"),
+            "/pages/_data.yml": import.meta.resolve("./_theme/pages/_data.yml"),
+            "/posts/_data.yml": import.meta.resolve("./_theme/posts/_data.yml"),
+          }
         })
       )
       .use(
